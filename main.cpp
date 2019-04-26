@@ -81,8 +81,8 @@ public:
 
 class EmployeeDatabase {
 private:
-    int counter = 0;
-    Employee employee[11];
+    //int counter = 0;
+    //Employee employee[11];
     vector<Employee> employees;
 public:
     EmployeeDatabase() {
@@ -92,8 +92,8 @@ public:
     void putEmployData(string name, int id, int designetion, int monthSal, int yearOfExp, int per) {
         Employee employeeA = Employee();
         employeeA.putData(name, id, designetion, monthSal, yearOfExp, per);
-        employee[counter].putData(name, id, designetion, monthSal, yearOfExp, per);
-        counter++;
+        //employee[counter].putData(name, id, designetion, monthSal, yearOfExp, per);
+        //counter++;
         employees.push_back(employeeA);
         //cout << "Employe at zero index : " << employees[0].getName() << endl;
     }
@@ -111,20 +111,20 @@ public:
     }
 
     int getSalaryById(int id) {
-        for (int i = 0; i <= counter; i++) {
-            if (employee[i].getId() == id) {
-                return employee[i].getMonthSal(); //return salary by employee id
+        for (auto employee:employees) {
+            if (employee.getId() == id) {
+                return employee.getMonthSal(); //return salary by employee id
             }
         }
         return 404; // 404 for not found
     }
 
     void updateDesig(int id) {
-        for (int i = 0; i <= counter; i++) {
-            if (employee[i].getId() == id) {
-                if (employee[i].getYearOfExp() >= 2 && employee[i].getDesignetion() > 0) {
-                    employee[i].setDesignetion(employee[i].getDesignetion() - 1);
-                    cout << "Designation updated for " << employee[i].getName() << endl;
+        for (auto employee:employees) {
+            if (employee.getId() == id) {
+                if (employee.getYearOfExp() >= 2 && employee.getDesignetion() > 0) {
+                    employee.setDesignetion(employee.getDesignetion() - 1);
+                    cout << "Designation updated for " << employee.getName() << endl;
                     return;
                 }
             }
@@ -133,11 +133,11 @@ public:
     }
 
     void incrimentSalary(int id) {
-        for (int i = 0; i <= counter; i++) {
-            if (employee[i].getId() == id) {
-                if (employee[i].getPerformance() >= 80) {
-                    employee[i].setMonthSal(employee[i].getMonthSal() + 10000);
-                    cout << "Salary updated for " << employee[i].getName() << endl;
+        for (auto employee:employees) {
+            if (employee.getId() == id) {
+                if (employee.getPerformance() >= 80) {
+                    employee.setMonthSal(employee.getMonthSal() + 10000);
+                    cout << "Salary updated for " << employee.getName() << endl;
                     return;
                 }
             }
@@ -167,7 +167,7 @@ int main() {
     database.updateDesig(002);
     database.incrimentSalary(002);
 
-    database.getEmployeeName();
+    //database.getEmployeeName();
 
 
     return 0;

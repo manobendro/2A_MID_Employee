@@ -116,7 +116,7 @@ public:
                 return employee.getMonthSal(); //return salary by employee id
             }
         }
-        return 404; // 404 for not found
+        return -1; // -1 for not found
     }
 
     void updateDesig(int id) {

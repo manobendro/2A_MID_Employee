@@ -110,6 +110,14 @@ public:
         return 0;
     }
 
+    Employee getEmployeeById(int id) {
+        for (auto employee:employees) {
+            if (employee.getId() == id) {
+                return employee;
+            }
+        }
+    }
+
     int getSalaryById(int id) {
         for (auto employee:employees) {
             if (employee.getId() == id) {
@@ -154,6 +162,8 @@ int main() {
     database.putEmployData("Sajal Biswas", 002, 2, 40000, 1, 60);
 
     cout << "Number of Employee: " << database.getNumberOfEmployee() << endl;
+
+    Employee firstEmployee = database.getEmployeeById(001);
 
     cout << "For id 1\n";
     cout << database.getSalaryById(001);
